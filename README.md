@@ -1,8 +1,6 @@
-# 🏏 AI Cricket Chat Assistant
+# 🤖 AI Chatbot — iOS
 
-An iOS chatbot that answers live cricket match questions in natural language, built with **Swift** and powered by the **Grok API (xAI)**.
-
-This started as a standalone prototype of the AI assistant feature I later shipped in production inside [CricDaddy](https://profolio-aryan.vercel.app/) — this repo isolates just the chat/LLM integration logic.
+A general-purpose conversational AI assistant for iOS, built with **Swift** and powered by the **Grok API (xAI)**. Ask it anything — it holds context across turns like a mini ChatGPT, natively on iOS.
 
 ---
 
@@ -14,12 +12,12 @@ This started as a standalone prototype of the AI assistant feature I later shipp
 
 ---
 
-## ✨ What it does
+## ✨ Features
 
-- Answers user questions about live match state (score, overs, players) in conversational language
-- Keeps a **5-message rolling conversation history**, so follow-up questions ("what about the last over?") stay coherent without re-sending full context every time
-- Uses a **domain-restricted system prompt** so the assistant declines to answer anything outside cricket/match context, instead of hallucinating unrelated answers
-- Injects live match data into the prompt at request time, rather than relying on the model's own (stale) knowledge
+- Natural language Q&A — ask general questions and get conversational responses
+- **Multi-turn conversational memory** — keeps a rolling window of recent messages so follow-up questions stay coherent without the user having to repeat context
+- Clean native chat UI built with UIKit (message bubbles, input bar, scroll-to-latest)
+- Integrates directly with the **Grok API (xAI)** over REST
 
 ---
 
@@ -29,20 +27,20 @@ This started as a standalone prototype of the AI assistant feature I later shipp
 
 ---
 
-## 🧠 How the prompt architecture works
+## 🧠 How it works
 
-1. On each user message, the app fetches the current match state (score, current batsmen, overs)
-2. That state is injected into the system prompt so the model always has fresh context, not stale training data
-3. The last 5 user/assistant message pairs are kept in memory and sent with each request, giving the model short-term conversational memory without unbounded token growth
-4. The system prompt explicitly constrains the assistant to match-related queries only
+1. User sends a message from the chat UI
+2. The app appends it to a rolling conversation history (last N message pairs)
+3. The full history is sent to the Grok API as context, so the model's responses stay coherent across turns
+4. The response streams/returns and renders as a new message bubble
 
-*(Add a short code snippet here showing the prompt-building function — a 10–15 line function that constructs the system prompt is worth more to a reviewer than any amount of prose.)*
+*(Add a short code snippet here — the function that builds the message history array and calls the API is worth more to a reviewer than any prose description.)*
 
 ---
 
 ## 🚧 Status
 
-Personal prototype extracted from production learnings — actively maintained as I explore further LLM + iOS integration patterns.
+Personal project — built to get hands-on with LLM integration on iOS. This experience directly informed the AI assistant feature I later shipped in production inside CricDaddy.
 
 ---
 
