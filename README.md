@@ -7,7 +7,8 @@ A general-purpose conversational AI assistant for iOS, built with **Swift** and 
 ## 📱 Screenshot
 
 <p align="center">
-  <img src="https://private-user-images.githubusercontent.com/105555664/653800025-acd12c99-d7f0-434c-99cc-6b2ee8fcf8cf.png" width="300" />
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 - 2026-09-17 at 16 16 05" src="https://github.com/user-attachments/assets/6ccc8335-4397-44ce-a902-ca129cd48ba2" />
+
 </p>
 
 ---
